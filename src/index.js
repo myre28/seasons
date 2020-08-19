@@ -22,11 +22,7 @@ class App extends React.Component {
 
      }
 
-
-    //React says we have to define render!!
-    render(){
-
-       
+     renderContent(){
        if (this.state.errorMessage && !this.state.lat){
            return <div>Error: {this.state.errorMessage}</div>;
        }
@@ -35,10 +31,21 @@ class App extends React.Component {
        return <SeasonDisplay  lat= {this.state.lat} />   
        }
        
-       return <Spinner />
+       return <Spinner message= "I am still waiting"/>
+     };
+
+    //React says we have to define render!!
+    render(){
+
+       return (
+         <div className='border'>
+          {this.renderContent()}
+         </div>
+       );
+       
          
     };
-
+     
 }
 
 ReactDOM.render(<App />, document.querySelector('#root')
